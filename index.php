@@ -48,7 +48,7 @@ $domain = $_GET[ 'domain' ];
             <br>
             <div class="text-center">
 
-                <form action="<?= $_SERVER[ 'PHP_SELF' ]; ?>">
+                <form action="<?= htmlspecialchars($_SERVER[ 'PHP_SELF' ]); ?>">
                     <div class="input-group input-group-lg">
 
                         <input type="text" class="form-control" placeholder="domain.ru / 1.23.45.67"
