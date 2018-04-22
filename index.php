@@ -43,9 +43,9 @@ $domain = $_GET[ 'domain' ];
 
     <div class="row">
         <div class="col-md-12 col-xs-12">
-            <br>
+            <br />
             <h5>Введите доменное имя или IP-адрес</h5>
-            <br>
+            <br />
             <div class="text-center">
 
                 <form action="<?= htmlspecialchars($_SERVER[ 'PHP_SELF' ]); ?>">
@@ -67,8 +67,17 @@ $domain = $_GET[ 'domain' ];
                 <?php
                 if ($domain) {
                     $domain = trim($domain);
-                    if (substr(strtolower($domain), 0, 7) == "http://") {
+                    if (substr(strtolower($domain), 0, 8) == "https://") {
+                        $domain = substr($domain, 8);
+                    } 
+		    elseif (substr(strtolower($domain), 0, 7) == "http://") {
                         $domain = substr($domain, 7);
+                    }
+		    elseif (substr($domain, 0, 3) == "://") {
+                        $domain = substr($domain, 3);
+                    }
+		    elseif (substr($domain, 0, 2) == "//") {
+                        $domain = substr($domain, 2);
                     }
                     if (substr(strtolower($domain), 0, 4) == "www.") {
                         $domain = substr($domain, 4);
@@ -92,26 +101,26 @@ $domain = $_GET[ 'domain' ];
         </div>
 
         <div class="col-md-6 col-xs-6">
-            <br>
-            <hr>
-            <br>
+            <br />
+            <hr />
+            <br />
             <p><a href=""><b>WhoisInfo.ru</b></a> - веб-инструмент для проверки занятости домена или получения
                 информации о его владельце. Введите интересующий Вас домен в "поле" выше и получите информацию в течении
                 1 сек.</p>
-            <br>
+            <br />
             <a href="https://github.com/abcdtools">См. этот проект на Гитхабе</a>
         </div>
         <div class="col-md-6 col-xs-6">
-            <br>
-            <hr>
-            <br>
+            <br />
+            <hr />
+            <br />
             <p>Сервис поддерживает проверку владельцев доменных имён и блоков IP-адресов. Поддерживаются международные и
                 национальные домены.
-                <br><br>
-                Версия: v1.0.0-beta.v16 (открытая бета)
-                <br>
-                Дата релиза проекта: 16 апреля 2018 г.
-                <br>
+                <br /><br />
+                Версия: v1.0.0-beta.v17 (открытая бета)
+                <br />
+                Дата релиза проекта: 22 апреля 2018 г.
+                <br />
                 В случае чего - <a class="text-muted" href="mailto:tech.admin@insune.com?subject=Почините WhoisInfo.ru">свяжитесь
                     с тех.админом</a>.
             </p>
@@ -121,7 +130,7 @@ $domain = $_GET[ 'domain' ];
 </div>
 
 
-<br><br>
+<br /><br />
 
 <!--
 	  Bootstrap, JQuery, Popper, FontAwesome 5 and other
