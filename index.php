@@ -59,7 +59,7 @@ $domain = $_GET[ 'domain' ];
                         </div>
                     </div>
                 </form>
-
+                <p class="text-center">Ваш IP-адрес: <a href="https://whoisinfo.ru/?domain=<?php echo $_SERVER["REMOTE_ADDR"]; ?>"><?php echo $_SERVER["REMOTE_ADDR"]; ?></a></p>
             </div>
 
 
@@ -81,7 +81,7 @@ $domain = $_GET[ 'domain' ];
                     } elseif ($validate->isDomain($domain)) {
                         $result = $whois->domain($domain);
                     } else {
-                        echo("Неправильно введен домен или IPv4. Повторите запрос.<br><br>Если Вы ввели в поле домен с протоколом или ссылкой, пожалуйста -<br>удалите ненужную информацию и оставьте домен в виде: <b>example.ru</b><br><br>Если данная ошибка продолжает появляться - свяжитесь с тех.админом.");
+                        echo("Неправильно введен домен или IPv4. Повторите запрос.");
                     }
                     echo "<pre>\n" . $result . "\n</pre>\n";
                 }
@@ -99,14 +99,14 @@ $domain = $_GET[ 'domain' ];
                 информации о его владельце. Введите интересующий Вас домен в "поле" выше и получите информацию в течении
                 1 сек.</p>
             <br>
-            <a href="https://github.com/ABCDTools/WhoisInfo.ru">См. этот проект на Github</a>
+            <a href="https://github.com/ABCDTools/WhoisInfo.ru">См. проект на Github</a>
         </div>
         <div class="col-md-6 col-xs-6">
             <br>
             <hr>
             <br>
             <p>Сервис поддерживает проверку владельцев доменных имён и блоков IP-адресов. Поддерживаются международные и
-                национальные домены.
+                национальные домены. Поддерживается работа с протоколом. API - пока что нет.
                 <br><br>
                 Версия: v1.0.0-beta.v22 (открытая бета)
                 <br>
