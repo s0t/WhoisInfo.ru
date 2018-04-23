@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $domain_list = require __DIR__.'/config/list.php';
 
-$domain = $_GET[ 'domain' ];
+$domain = htmlspecialchars($_GET[ 'domain' ]);
 
 
 ?>
