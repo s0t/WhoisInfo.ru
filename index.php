@@ -4,42 +4,42 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $domain_list = require __DIR__.'/config/list.php';
 
-$domain = $_GET[ 'domain' ];
+$domain = htmlspecialchars($_GET[ 'domain' ]);
 
 
 ?>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="https://local.insune.co/elements/logo/insune.com/logo-original.ico">
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="https://local.insune.co/elements/logo/insune.com/logo-original.ico">
 
-    <meta name="description"
+	<meta name="description"
           content="Бесплатный Whois-сервис для проверки владельца доменного имени или IP-адреса. Без капчи и ограничений. Поддержка международных, национальных и новых доменных имён.">
-    <meta name="keywords"
+	<meta name="keywords"
           content="домен, домены, купить домен, доменное имя, доменные имена, регистрация домена, бесплатный домен, проверить домен, занятость домена, reg ru, рег ру, nic ru, ник ру, rucenter, ru center, namecheap, неймчип, дешёвые домены, дешевые домены, зарегистрировать домен, ru домен, ру домен, рф домен, su домен, whois, domain, source, .ru, .su, .com, .net, .org, .info, .biz, .us, .co.uk, gtld, icann, registrar, domain name, nserver, домен, зона, сервер, регистратор, занят, свободен, владелец"/>
-    <meta name="copyright" content="Insune Group - insune.co">
+	<meta name="copyright" content="Insune Group - insune.co">
 
-    <title>Whois-сервис - Россия | Проверка владельца домена</title>
+	<title>Whois-сервис - Россия | Проверка владельца домена</title>
 
-    <meta property="title" content="Whois-сервис - Россия | Проверка владельца домена"/>
-    <meta property="url" content="https://whoisinfo.ru"/>
-    <meta property="image" content="https://local.insune.co/elements/logo/insune.com/logo-original.png"/>
+	<meta property="title" content="Whois-сервис - Россия | Проверка владельца домена"/>
+	<meta property="url" content="https://whoisinfo.ru"/>
+	<meta property="image" content="https://local.insune.co/elements/logo/insune.com/logo-original.png"/>
 
-    <meta name="google-site-verification" content="de87FT-eNa5rl3xZ0gkVrncwIo3WqChE8beeHy_5Jsc"/>
-    <meta name="yandex-verification" content="a29337686e13fec6"/>
-    <meta name="msvalidate.01" content="DE9AD9612B9197F87CB907F0851A488E"/>
+	<meta name="google-site-verification" content="de87FT-eNa5rl3xZ0gkVrncwIo3WqChE8beeHy_5Jsc"/>
+	<meta name="yandex-verification" content="a29337686e13fec6"/>
+	<meta name="msvalidate.01" content="DE9AD9612B9197F87CB907F0851A488E"/>
 
-    <link rel="preconnect" href="//local.insune.co/">
+	<link rel="preconnect" href="//local.insune.co/">
 
-    <link href="https://local.insune.co/library/bootstrap/v4.0.0/css/bootstrap.min.css" rel="stylesheet">
-</head>
+	<link href="https://local.insune.co/library/bootstrap/v4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  </head>
 
 
-<body class="bg-light">
-<!-- ://////////////////////////////: | BODY | ://////////////////////////////: -->
+  <body class="bg-light">
+  <!-- ://////////////////////////////: | BODY | ://////////////////////////////: -->
 
-<div class="container pt-4">
+  <div class="container pt-4">
 
     <div class="row">
         <div class="col-md-12 col-xs-12">
@@ -59,7 +59,7 @@ $domain = $_GET[ 'domain' ];
                         </div>
                     </div>
                 </form>
-
+                <p class="text-center">Ваш IP-адрес: <a href="https://whoisinfo.ru/?domain=<?php echo $_SERVER["REMOTE_ADDR"]; ?>"><?php echo $_SERVER["REMOTE_ADDR"]; ?></a></p>
             </div>
 
 
@@ -90,7 +90,7 @@ $domain = $_GET[ 'domain' ];
                     } elseif ($validate->isDomain($domain)) {
                         $result = $whois->domain($domain);
                     } else {
-                        echo("Неправильно введен домен или IPv4. Повторите запрос.<br><br>Если Вы ввели в поле домен с протоколом или ссылкой, пожалуйста -<br>удалите ненужную информацию и оставьте домен в виде: <b>example.ru</b><br><br>Если данная ошибка продолжает появляться - свяжитесь с тех.админом.");
+                        echo("Неправильно введен домен или IPv4. Повторите запрос.");
                     }
                     echo "<pre>\n" . $result . "\n</pre>\n";
                 }
@@ -107,44 +107,36 @@ $domain = $_GET[ 'domain' ];
             <p><a href=""><b>WhoisInfo.ru</b></a> - веб-инструмент для проверки занятости домена или получения
                 информации о его владельце. Введите интересующий Вас домен в "поле" выше и получите информацию в течении
                 1 сек.</p>
-            <br />
-            <a href="https://github.com/abcdtools">См. этот проект на Гитхабе</a>
+            <br>
+            <a href="https://github.com/ABCDTools/WhoisInfo.ru">См. проект на Github</a>
         </div>
         <div class="col-md-6 col-xs-6">
             <br />
             <hr />
             <br />
             <p>Сервис поддерживает проверку владельцев доменных имён и блоков IP-адресов. Поддерживаются международные и
-                национальные домены.
-                <br /><br />
-                Версия: v1.0.0-beta.v17 (открытая бета)
-                <br />
+                национальные домены. Поддерживается работа с протоколом. API - пока что нет.
+                <br><br>
+                Версия: v1.0.0-beta.v22 (открытая бета)
+                <br>
                 Дата релиза проекта: 22 апреля 2018 г.
-                <br />
-                В случае чего - <a class="text-muted" href="mailto:tech.admin@insune.com?subject=Почините WhoisInfo.ru">свяжитесь
-                    с тех.админом</a>.
+                <br>
+                В случае чего - <a class="text-muted" href="https://github.com/ABCDTools/WhoisInfo.ru/issues">создайте "Запрос на фикс"</a>.
             </p>
         </div>
     </div>
+  </div>
 
-</div>
 
+  <br>
+  <br>
+  
+  <script src="https://local.insune.co/library/jquery/v3.3.1/slim.min.js"></script>
+  <script>window.jQuery || document.write('<script src="https://local.insune.co/library/jquery/v3.3.1/slim.min.js"><\/script>')</script>
 
-<br /><br />
+  <script src="https://local.insune.co/library/bootstrap/v4.0.0/js/bootstrap.min.js"></script>
 
-<!--
-	  Bootstrap, JQuery, Popper, FontAwesome 5 and other
-	  ==================================================
-	  Based at Insune.Storage for Insune Group Projects
-	  -->
-
-<script src="https://local.insune.co/library/jquery/v3.3.1/slim.min.js"></script>
-<script>window.jQuery || document.write('<script src="https://local.insune.co/library/jquery/v3.3.1/slim.min.js"><\/script>')</script>
-<script src="https://local.insune.co/library/popper/v1.13.0/popper.min.js"></script>
-
-<script src="https://local.insune.co/library/bootstrap/v4.0.0/js/bootstrap.min.js"></script>
-
-<!-- ://////////////////////////////: | BODY | ://////////////////////////////: -->
-</body>
+  <!-- ://////////////////////////////: | BODY | ://////////////////////////////: -->
+  </body>
 
 </html>
